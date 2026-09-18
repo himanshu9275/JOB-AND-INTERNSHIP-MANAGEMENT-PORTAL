@@ -763,3 +763,140 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+.page-header {
+    text-align: center;
+    padding: 70px 20px;
+    background: white;
+}
+
+.page-header .tag {
+    margin-bottom: 15px;
+}
+
+.page-header h1 {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.page-header p:last-child {
+    max-width: 650px;
+    margin: auto;
+    color: #667085;
+    line-height: 1.7;
+    font-size: 16px;
+}
+
+.jobs-section {
+    padding: 70px 8%;
+    background: #f5f7fb;
+}
+
+.section-title {
+    margin-bottom: 35px;
+}
+
+.section-title h2 {
+    font-size: 34px;
+    margin-top: 5px;
+}
+
+.job-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.job-card {
+    background: white;
+    padding: 28px;
+    border: 1px solid #e5e7eb;
+    border-radius: 15px;
+    transition: 0.2s;
+}
+
+.job-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.job-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+}
+
+.company-logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    background: #eaf0ff;
+    color: #2864dc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.job-type {
+    background: #eef7ee;
+    color: #287a3e;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.job-card h3 {
+    font-size: 21px;
+    margin-bottom: 8px;
+}
+
+.company-name {
+    color: #667085;
+    margin-bottom: 18px;
+}
+
+.job-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: #475467;
+    font-size: 14px;
+    margin-bottom: 18px;
+}
+
+.job-description {
+    color: #667085;
+    line-height: 1.6;
+    font-size: 14px;
+    margin-bottom: 22px;
+}
+
+.job-btn {
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+}
+
+@media (max-width: 1000px) {
+    .job-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 650px) {
+    .job-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .page-header h1 {
+        font-size: 38px;
+    }
+
+    .jobs-section {
+        padding: 50px 25px;
+    }
+}

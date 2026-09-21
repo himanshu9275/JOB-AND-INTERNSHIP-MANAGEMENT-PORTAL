@@ -11,7 +11,6 @@ body {
     min-height: 100vh;
 }
 
-/* ================= NAVBAR ================= */
 
 .navbar {
     min-height: 90px;
@@ -70,7 +69,6 @@ body {
     color: #2864dc !important;
 }
 
-/* ================= LOGIN PAGE ================= */
 
 .login-page {
     min-height: calc(100vh - 170px);
@@ -154,7 +152,6 @@ body {
     margin-top: 18px;
 }
 
-/* ================= HOME PAGE ================= */
 
 .hero {
     text-align: center;
@@ -284,7 +281,6 @@ body {
     font-weight: 600;
 }
 
-/* ================= FOOTER ================= */
 
 .footer {
     min-height: 80px;
@@ -297,7 +293,6 @@ body {
     font-size: 14px;
 }
 
-/* ================= RESPONSIVE ================= */
 
 @media (max-width: 850px) {
 
@@ -720,7 +715,6 @@ body {
     background: white;
     border: 1px solid #e5e7eb;
     border-radius: 15px;
-    text-decoration: none;
 }
 
 .quick-card > span {
@@ -783,7 +777,6 @@ body {
     max-width: 650px;
     margin: auto;
     color: #667085;
-    line-height: 1.7;
     font-size: 16px;
 }
 

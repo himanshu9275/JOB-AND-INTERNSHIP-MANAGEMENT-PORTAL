@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recruiter Login | InternX</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+.recruiter-auth{max-width:480px;margin:50px auto;padding:30px;background:#fff;border-radius:14px;box-shadow:0 5px 25px rgba(0,0,0,.08)}
+.recruiter-auth h2{margin-bottom:10px}
+.recruiter-auth p{color:#667085;margin-bottom:20px}
+.auth-tabs{display:flex;gap:10px;margin-bottom:24px}
+.auth-tabs button{flex:1;padding:12px;border:1px solid #2864dc;border-radius:8px;background:#fff;color:#2864dc;cursor:pointer;font-weight:600}
+.auth-tabs button.active{background:#2864dc;color:#fff}
+.auth-field{margin-bottom:18px}
+.auth-field label{display:block;margin-bottom:8px;font-weight:600}
+.auth-field input{width:100%;padding:12px;border:1px solid #d5d9e2;border-radius:8px;font:inherit}
+.auth-submit{width:100%;padding:13px;border:none;border-radius:8px;background:#2864dc;color:#fff;font-size:16px;font-weight:600;cursor:pointer}
+.auth-submit:hover{background:#1e4fb5}
+#recruiterMessage{margin-top:16px;font-weight:500}
+@media (max-width:520px){.recruiter-auth{margin:25px 15px;padding:22px}}
+</style>
+</head>
+<body>
+
+<header class="navbar">
+  <a href="index.html" class="logo"><div class="logo-box">IX</div><span>InternX</span></a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="jobs.html">Jobs</a>
+    <a href="internships.html">Internships</a>
+    <a href="login.html">Student Login</a>
+  </nav>
+</header>
+
+<main class="recruiter-auth">
+  <h2 id="authHeading">Recruiter Login</h2>
+  <p>Sign in to manage your company's job postings.</p>
+
+  <div class="auth-tabs">
+    <button type="button" id="loginTab" class="active">Login</button>
+    <button type="button" id="signupTab">Company Signup</button>
+  </div>
+
+  <form id="recruiterForm">
+    <div class="auth-field" id="companyField" hidden>
+      <label for="companyName">Company Name *</label>
+      <input type="text" id="companyName" placeholder="Enter company name" autocomplete="organization">
+    </div>
+    <div class="auth-field">
+      <label for="recruiterEmail">Company Email *</label>
+      <input type="email" id="recruiterEmail" required placeholder="hr@company.com" autocomplete="email">
+    </div>
+    <div class="auth-field">
+      <label for="recruiterPassword">Password *</label>
+      <input type="password" id="recruiterPassword" required minlength="8" placeholder="Minimum 8 characters" autocomplete="current-password">
+    </div>
+    <div class="auth-field" id="confirmField" hidden>
+      <label for="confirmPassword">Confirm Password *</label>
+      <input type="password" id="confirmPassword" minlength="8" placeholder="Re-enter password" autocomplete="new-password">
+    </div>
+    <button type="submit" class="auth-submit" id="submitButton">Login</button>
+    <p id="recruiterMessage" role="status" aria-live="polite"></p>
+  </form>
+</main>
+
+<footer><p>&copy; 2026 InternX. All rights reserved.</p></footer>
+
+<script>
+const $ = id => document.getElementById(id);
+const message = $("recruiterMessage");
+let isSignup = false;
+
+const say = (text, color = "crimson") => { message.textContent = text; message.style.color = color; };
+
+function setMode(signup) {
+  isSignup = signup;
+  $("authHeading").textContent = signup ? "Company Signup" : "Recruiter Login";
+  $("submitButton").textContent = signup ? "Create Account" : "Login";
+  $("companyField").hidden = $("confirmField").hidden = !signup;
+  $("companyName").required = $("confirmPassword").required = signup;
+  $("loginTab").classList.toggle("active", !signup);
+  $("signupTab").classList.toggle("active", signup);
+  message.textContent = $("recruiterPassword").value = $("confirmPassword").value = "";
+  $("recruiterPassword").autocomplete = signup ? "new-password" : "current-password";
+}
+
+$("loginTab").onclick = () => setMode(false);
+$("signupTab").onclick = () => setMode(true);
+
+$("recruiterForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const email = $("recruiterEmail").value.trim().toLowerCase();
+  const password = $("recruiterPassword").value;
+  const recruiters = JSON.parse(localStorage.getItem("internxRecruiters") || "[]");
+
+  if (isSignup) {
+    const company = $("companyName").value.trim();
+    if (!company) return say("Enter your company name.");
+    if (password.length < 8) return say("Password must be at least 8 characters.");
+    if (password !== $("confirmPassword").value) return say("Passwords do not match.");
+    if (recruiters.some(r => r.email === email))
+      return say("An account with this email already exists. Please login.");
+
+    recruiters.push({ company, email, password });
+    localStorage.setItem("internxRecruiters", JSON.stringify(recruiters));
+    $("recruiterForm").reset();
+    setMode(false);
+    return say("Account created! You can now login.", "green");
+  }
+
+  const recruiter = recruiters.find(r => r.email === email && r.password === password);
+  if (!recruiter) return say("Invalid email or password. Please signup first.");
+
+  sessionStorage.setItem("internxRecruiterEmail", recruiter.email);
+  sessionStorage.setItem("internxRecruiterCompany", recruiter.company);
+  sessionStorage.setItem("internxUserRole", "recruiter");
+  location.href = "post-job.html";
+});
+</script>
+</body>
+</html>

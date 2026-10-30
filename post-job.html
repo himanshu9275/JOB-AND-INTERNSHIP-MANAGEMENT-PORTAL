@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post a Job | InternX</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .post-job-container {
+            max-width: 850px;
+            margin: 40px auto;
+            padding: 30px;
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .post-job-container h2 {
+            margin-bottom: 10px;
+        }
+
+        .post-job-description {
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .post-job-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d5d9e2;
+            border-radius: 8px;
+            font: inherit;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .post-job-submit {
+            grid-column: 1 / -1;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background: #2864dc;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .post-job-submit:hover {
+            background: #1e4fb5;
+        }
+
+        #jobMessage {
+            grid-column: 1 / -1;
+            margin: 0;
+        }
+
+        @media (max-width: 600px) {
+            .post-job-container {
+                margin: 20px 12px;
+                padding: 20px;
+            }
+
+            .post-job-form {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full-width,
+            .post-job-submit,
+            #jobMessage {
+                grid-column: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="navbar">
+    <div class="logo">IX</div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="jobs.html">Jobs</a>
+        <a href="internships.html">Internships</a>
+        <a href="applications.html">Applications</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="login.html" class="nav-login" id="recruiterLoginLink">Login</a>
+        <button id="recruiterLogoutBtn" class="nav-login"
+                style="display:none; cursor:pointer;">Logout</button>
+    </nav>
+</header>
+
+
+    <section class="page-header">
+        <h1>Post a Job</h1>
+        <p>Find the right talent for your company with InternX.</p>
+    </section>
+
+    <main class="post-job-container">
+        <h2>Job Details</h2>
+        <p class="post-job-description">
+            Fill in the details below to create a new job listing.
+        </p>
+
+        <form id="postJobForm" class="post-job-form">
+
+            <div class="form-group">
+                <label for="companyName">Company Name *</label>
+                <input type="text" id="companyName" required
+                       placeholder="Enter company name">
+            </div>
+
+            <div class="form-group">
+                <label for="jobTitle">Job Title *</label>
+                <input type="text" id="jobTitle" required
+                       placeholder="e.g. Software Developer">
+            </div>
+
+            <div class="form-group">
+                <label for="jobLocation">Location *</label>
+                <input type="text" id="jobLocation" required
+                       placeholder="e.g. Noida">
+            </div>
+
+            <div class="form-group">
+                <label for="jobType">Job Type *</label>
+                <select id="jobType" required>
+                    <option value="">Select job type</option>
+                    <option value="Full Time">Full Time</option>
+                    <option value="Part Time">Part Time</option>
+                    <option value="Internship">Internship</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="jobSalary">Salary / Stipend *</label>
+                <input type="text" id="jobSalary" required
+                       placeholder="e.g. ₹5-8 LPA or ₹15,000/month">
+            </div>
+
+            <div class="form-group">
+                <label for="jobExperience">Experience Required *</label>
+                <select id="jobExperience" required>
+                    <option value="">Select experience</option>
+                    <option value="Fresher">Fresher</option>
+                    <option value="0-1 Years">0-1 Years</option>
+                    <option value="1-2 Years">1-2 Years</option>
+                    <option value="2+ Years">2+ Years</option>
+                </select>
+            </div>
+
+            <div class="form-group full-width">
+                <label for="jobQualification">Qualification *</label>
+                <input type="text" id="jobQualification" required
+                       placeholder="e.g. B.Tech CSE">
+            </div>
+
+            <div class="form-group full-width">
+                <label for="jobSkills">Required Skills *</label>
+                <input type="text" id="jobSkills" required
+                       placeholder="e.g. Java, HTML, CSS">
+            </div>
+
+            <div class="form-group full-width">
+                <label for="jobDescription">Job Description *</label>
+                <textarea id="jobDescription" required
+                          placeholder="Describe the role and responsibilities"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="recruiterEmail">Recruiter Email *</label>
+                <input type="email" id="recruiterEmail" required
+                       placeholder="hr@company.com">
+            </div>
+
+            <div class="form-group">
+                <label for="jobDeadline">Application Deadline *</label>
+                <input type="date" id="jobDeadline" required>
+            </div>
+
+            <button type="submit" class="post-job-submit">
+                Post Job
+            </button>
+
+            <p id="jobMessage" role="status" aria-live="polite"></p>
+
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 InternX. All rights reserved.</p>
+    </footer>
+    <script src="javascript/post-job.js"></script>
+    <script>
+const recruiterEmail = sessionStorage.getItem("internxRecruiterEmail");
+const loginLink = document.getElementById("recruiterLoginLink");
+const logoutBtn = document.getElementById("recruiterLogoutBtn");
+
+if (recruiterEmail) {
+    loginLink.style.display = "none";
+    logoutBtn.style.display = "inline-block";
+}
+
+logoutBtn.addEventListener("click", function () {
+    sessionStorage.removeItem("internxRecruiterEmail");
+    sessionStorage.removeItem("internxRecruiterCompany");
+    sessionStorage.removeItem("internxUserRole");
+
+    window.location.href = "recruiter-login.html";
+});
+</script>
+
+</body>
+</html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,164 +10,232 @@
 
 <body>
 
-<header class="navbar">
+    <!-- Navigation -->
+    <header class="navbar">
 
-    <a href="index.html" class="logo">
-        <div class="logo-box">IX</div>
-        <span>InternX</span>
-    </a>
+        <a href="index.html" class="logo">
+            <div class="logo-box">IX</div>
+            <span>InternX</span>
+        </a>
 
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="jobs.html">Jobs</a>
-        <a href="internships.html">Internships</a>
-        <a href="applications.html">Applications</a>
-        <a href="dashboard.html">Dashboard</a>
-        <a href="login.html" class="nav-login">Login</a>
-    </nav>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="jobs.html">Jobs</a>
+            <a href="internships.html">Internships</a>
+            <a href="applications.html">Applications</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="login.html" class="nav-login">Login / Sign Up</a>
+        </nav>
 
-</header>
+    </header>
 
+    <main>
 
-<main>
+        <!-- Page Heading -->
+        <section class="page-header">
 
-    <section class="page-header">
+            <p class="tag">TAKE THE NEXT STEP</p>
 
-        <p class="tag">TAKE THE NEXT STEP</p>
+            <h1>Application Form</h1>
 
-        <h1>Application Form</h1>
+            <p>
+                Fill in your details to apply for a job or internship opportunity.
+            </p>
 
-        <p>
-            Fill in your details to apply for a job or internship opportunity.
-        </p>
+        </section>
 
-    </section>
+        <!-- Application Form -->
+        <section class="application-section">
 
+            <div class="application-card">
 
-    <section class="application-section">
+                <h2>Applicant Details</h2>
 
-        <div class="application-card">
+                <form id="applicationForm">
 
-            <h2>Applicant Details</h2>
+                    <!-- Name and Email -->
+                    <div class="form-row">
 
-            <form>
+                        <div class="form-group">
+                            <label for="applicantName">Full Name</label>
 
-                <div class="form-row">
+                            <input
+                                type="text"
+                                id="applicantName"
+                                placeholder="Enter your full name"
+                                autocomplete="name"
+                                required
+                            >
+                        </div>
 
-                    <div class="form-group">
-                        <label>Full Name</label>
-                        <input
-                            type="text"
-                            placeholder="Enter your full name"
-                            required
-                        >
+                        <div class="form-group">
+                            <label for="applicantEmail">Email</label>
+
+                            <input
+                                type="email"
+                                id="applicantEmail"
+                                placeholder="Enter your email"
+                                autocomplete="email"
+                                required
+                            >
+                        </div>
+
                     </div>
 
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input
-                            type="email"
-                            placeholder="Enter your email"
-                            required
-                        >
+                    <!-- Phone and Qualification -->
+                    <div class="form-row">
+
+                        <div class="form-group">
+                            <label for="applicantPhone">Phone Number</label>
+
+                            <input
+                                type="tel"
+                                id="applicantPhone"
+                                placeholder="Enter 10-digit mobile number"
+                                inputmode="numeric"
+                                maxlength="10"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="qualification">Qualification</label>
+
+                            <input
+                                type="text"
+                                id="qualification"
+                                placeholder="e.g. B.Tech, BCA, MCA"
+                                required
+                            >
+                        </div>
+
                     </div>
 
-                </div>
-
-
-                <div class="form-row">
-
+                    <!-- Opportunity -->
                     <div class="form-group">
-                        <label>Phone Number</label>
-                        <input
-                            type="tel"
-                            placeholder="Enter your phone number"
-                            required
-                        >
+
+                        <label for="opportunity">Select Opportunity</label>
+
+                        <select id="opportunity" required>
+
+                            <option value="">Select an opportunity</option>
+
+                            <option value="Software Developer - Tata Consultancy Services">
+                                Software Developer - Tata Consultancy Services
+                            </option>
+
+                            <option value="Web Developer - Infosys">
+                                Web Developer - Infosys
+                            </option>
+
+                            <option value="Frontend Developer - Wipro">
+                                Frontend Developer - Wipro
+                            </option>
+
+                            <option value="Junior Software Engineer - Accenture">
+                                Junior Software Engineer - Accenture
+                            </option>
+
+                            <option value="Associate Developer - IBM">
+                                Associate Developer - IBM
+                            </option>
+
+                            <option value="System Engineer - HCLTech">
+                                System Engineer - HCLTech
+                            </option>
+
+                            <option value="Web Development Intern - TechNova Solutions">
+                                Web Development Intern - TechNova Solutions
+                            </option>
+
+                            <option value="Cyber Security Intern - SecureNet India">
+                                Cyber Security Intern - SecureNet India
+                            </option>
+
+                            <option value="Data Analytics Intern - DataCore Pvt. Ltd.">
+                                Data Analytics Intern - DataCore Pvt. Ltd.
+                            </option>
+
+                            <option value="Java Development Intern - CodeSphere Technologies">
+                                Java Development Intern - CodeSphere Technologies
+                            </option>
+
+                            <option value="UI/UX Design Intern">
+                                UI/UX Design Intern
+                            </option>
+
+                            <option value="Software Testing Intern">
+                                Software Testing Intern
+                            </option>
+
+                        </select>
+
                     </div>
 
+                    <!-- Cover Letter -->
                     <div class="form-group">
-                        <label>Qualification</label>
-                        <input
-                            type="text"
-                            placeholder="Enter your qualification"
-                            required
-                        >
+
+                        <label for="coverLetter">Cover Letter (Optional)</label>
+
+                        <textarea
+                            id="coverLetter"
+                            rows="6"
+                            placeholder="Write a short cover letter..."
+                        ></textarea>
+
                     </div>
 
-                </div>
+                    <!-- Resume -->
+                    <div class="form-group">
 
+                        <label for="resume">Resume</label>
 
-                <div class="form-group">
+                        <input
+                            type="file"
+                            id="resume"
+                            accept=".pdf,.doc,.docx"
+                            required
+                        >
 
-                    <label>Select Opportunity</label>
+                        <small>Allowed formats: PDF, DOC, DOCX. Maximum size: 2 MB.</small>
 
-                    <select required>
+                    </div>
 
-                        <option value="">Select an opportunity</option>
+                    <!-- Success and Error Messages -->
+                    <p
+                        id="applicationMessage"
+                        role="status"
+                        aria-live="polite"
+                    ></p>
 
-                        <option>Software Developer - TechNova Solutions</option>
+                    <!-- Submit Button -->
+                    <button
+                        type="submit"
+                        class="primary-btn application-btn"
+                    >
+                        Submit Application
+                    </button>
 
-                        <option>Web Developer - Digital Works</option>
+                </form>
 
-                        <option>Cyber Security Analyst - SecureNet India</option>
+            </div>
 
-                        <option>Java Developer - CodeSphere Technologies</option>
+        </section>
 
-                        <option>Web Development Intern - TechNova Solutions</option>
+    </main>
 
-                        <option>Cyber Security Intern - SecureNet India</option>
+    <!-- Footer -->
+    <footer class="footer">
 
-                        <option>Data Analytics Intern - DataCore Pvt. Ltd.</option>
+        <span>© 2026 InternX</span>
 
-                        <option>Java Development Intern - CodeSphere Technologies</option>
+        <span>Job & Internship Management Portal</span>
 
-                    </select>
+    </footer>
 
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>Cover Letter</label>
-
-                    <textarea
-                        rows="6"
-                        placeholder="Write a short cover letter..."
-                    ></textarea>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>Resume</label>
-
-                    <input type="file">
-
-                </div>
-
-
-                <button type="submit" class="primary-btn application-btn">
-                    Submit Application
-                </button>
-
-            </form>
-
-        </div>
-
-    </section>
-
-</main>
-
-
-<footer class="footer">
-
-    <span>© 2026 InternX</span>
-
-    <span>Job & Internship Management Portal</span>
-
-</footer>
+    <!-- JavaScript -->
+    <script src="javascript/apply.js"></script>
 
 </body>
+
 </html>

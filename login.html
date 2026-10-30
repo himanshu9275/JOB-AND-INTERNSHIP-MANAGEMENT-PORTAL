@@ -1,91 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - InternX</title>
-    <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login / Sign Up | InternX</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+.auth-tabs{display:flex;flex-wrap:wrap;gap:10px;margin:25px 0}
+.auth-tab{flex:1;min-width:120px;padding:12px 8px;border:1px solid #d5dbea;border-radius:9px;background:#fff;color:#64718a;font-weight:600;cursor:pointer}
+.auth-tab.active{background:#2864df;color:#fff;border-color:#2864df}
+.auth-form .form-group{margin-bottom:18px}
+.auth-form label{display:block;margin-bottom:8px;font-weight:600}
+.auth-form input{width:100%;box-sizing:border-box}
+.password-wrapper{position:relative}
+.password-wrapper input{padding-right:65px}
+.password-toggle{position:absolute;right:12px;top:50%;transform:translateY(-50%);border:none;background:transparent;color:#2864df;font-weight:600;cursor:pointer}
+.auth-submit{width:100%;padding:14px;border:none;border-radius:9px;background:#2864df;color:#fff;font-size:16px;font-weight:700;cursor:pointer}
+.auth-submit:hover{background:#1d50bc}
+.auth-message{margin:12px 0;font-size:14px;line-height:1.5}
+.auth-message.error{color:#d93025}
+.auth-message.success{color:#18864b}
+.auth-note{margin-top:22px;color:#7a879e;font-size:12px;line-height:1.7;text-align:center}
+.auth-footer{margin-top:20px;text-align:center;color:#64718a}
+.auth-footer button{border:none;background:none;color:#2864df;font-weight:700;cursor:pointer}
+.remember-option{display:flex;align-items:center;gap:8px;margin-bottom:18px}
+.remember-option input{width:auto}
+[hidden]{display:none!important}
+</style>
 </head>
-
 <body>
 
 <header class="navbar">
-
-    <a href="index.html" class="logo">
-        <div class="logo-box">IX</div>
-        <span>InternX</span>
-    </a>
-
+  <div class="container nav-container">
+    <a href="index.html" class="logo"><span class="logo-icon">IX</span><span>InternX</span></a>
     <nav>
-        <a href="index.html">Home</a>
-        <a href="jobs.html">Jobs</a>
-        <a href="internships.html">Internships</a>
-        <a href="applications.html">Applications</a>
-        <a href="dashboard.html">Dashboard</a>
-        <a href="login.html" class="nav-login">Login</a>
+      <a href="index.html">Home</a>
+      <a href="jobs.html">Jobs</a>
+      <a href="internships.html">Internships</a>
+      <a href="applications.html">Applications</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="login.html" class="nav-button">Login / Sign Up</a>
     </nav>
-
+  </div>
 </header>
 
-
 <main class="login-page">
+<section class="login-card">
+  <p class="eyebrow">WELCOME TO INTERNX</p>
+  <h1 id="formHeading">Welcome Back!</h1>
+  <p id="formDescription">Login to explore jobs and internships and manage your applications.</p>
 
-    <div class="login-card">
+  <div class="auth-tabs">
+    <button type="button" class="auth-tab active" id="loginTab" aria-selected="true">Student Login</button>
+    <button type="button" class="auth-tab" id="signupTab" aria-selected="false">Student Sign Up</button>
+    <button type="button" class="auth-tab" onclick="location.href='recruiter-login.html'">Recruiter Login</button>
+  </div>
 
-        <p class="tag">WELCOME TO INTERNX</p>
-
-        <h1>Login</h1>
-
-        <p class="login-text">
-            Login to access jobs, internships and applications.
-        </p>
-
-        <form action="index.html">
-
-            <div class="form-group">
-                <label>Email</label>
-
-                <input
-                    type="email"
-                    placeholder="Enter your email"
-                    required
-                >
-            </div>
-
-
-            <div class="form-group">
-                <label>Password</label>
-
-                <input
-                    type="password"
-                    placeholder="Enter your password"
-                    required
-                >
-            </div>
-
-
-            <button type="submit" class="login-submit">
-                Login
-            </button>
-
-        </form>
-
-        <p class="demo-note">
-            Frontend demo login
-        </p>
-
+  <!-- LOGIN FORM -->
+  <form id="loginForm" class="auth-form" novalidate>
+    <div class="form-group">
+      <label for="loginEmail">Email Address</label>
+      <input type="email" id="loginEmail" placeholder="Enter your email" autocomplete="email" required>
     </div>
+    <div class="form-group">
+      <label for="loginPassword">Password</label>
+      <div class="password-wrapper">
+        <input type="password" id="loginPassword" placeholder="Enter your password" autocomplete="current-password" required>
+        <button type="button" class="password-toggle" data-target="loginPassword">Show</button>
+      </div>
+    </div>
+    <label class="remember-option">
+      <input type="checkbox" id="rememberMe"><span>Remember my email</span>
+    </label>
+    <p id="loginMessage" class="auth-message" role="status" aria-live="polite"></p>
+    <button type="submit" class="auth-submit">Login</button>
+    <div class="auth-footer">New to InternX? <button type="button" id="openSignup">Create an account</button></div>
+  </form>
 
+  <!-- SIGNUP FORM -->
+  <form id="signupForm" class="auth-form" hidden novalidate>
+    <div class="form-group">
+      <label for="fullName">Full Name</label>
+      <input type="text" id="fullName" placeholder="Enter your full name" autocomplete="name" maxlength="60" pattern="[A-Za-z ]+" title="Use English letters and spaces only." required>
+    </div>
+    <div class="form-group">
+      <label for="signupEmail">Email Address</label>
+      <input type="email" id="signupEmail" placeholder="Enter your email" autocomplete="email" required>
+    </div>
+    <div class="form-group">
+      <label for="signupPassword">Create Password</label>
+      <div class="password-wrapper">
+        <input type="password" id="signupPassword" placeholder="Minimum 8 characters" autocomplete="new-password" minlength="8" required>
+        <button type="button" class="password-toggle" data-target="signupPassword">Show</button>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="confirmPassword">Confirm Password</label>
+      <div class="password-wrapper">
+        <input type="password" id="confirmPassword" placeholder="Re-enter your password" autocomplete="new-password" required>
+        <button type="button" class="password-toggle" data-target="confirmPassword">Show</button>
+      </div>
+    </div>
+    <p id="signupMessage" class="auth-message" role="status" aria-live="polite"></p>
+    <button type="submit" class="auth-submit">Create Account</button>
+    <div class="auth-footer">Already registered? <button type="button" id="openLogin">Login</button></div>
+  </form>
+
+  <p class="auth-note">
+    Student project demo: account data is stored only in this browser.<br>
+    Do not use a real or reused password.
+  </p>
+</section>
 </main>
 
+<script>
+const $ = id => document.getElementById(id);
+const [loginMessage, signupMessage] = [$("loginMessage"), $("signupMessage")];
 
-<footer class="footer">
+const show = (el, text, type) => { el.textContent = text; el.className = "auth-message " + type; };
 
-    <span>© 2026 InternX</span>
+function switchForm(form) {
+  const isLogin = form === "login";
+  $("loginForm").hidden = !isLogin;
+  $("signupForm").hidden = isLogin;
+  [["loginTab", isLogin], ["signupTab", !isLogin]].forEach(([id, on]) => {
+    $(id).classList.toggle("active", on);
+    $(id).setAttribute("aria-selected", on);
+  });
+  $("formHeading").textContent = isLogin ? "Welcome Back!" : "Create Your Account";
+  $("formDescription").textContent = isLogin
+    ? "Login to explore jobs and internships and manage your applications."
+    : "Sign up to discover opportunities and track your applications.";
+  loginMessage.textContent = signupMessage.textContent = "";
+}
 
-    <span>Job & Internship Management Portal</span>
+$("loginTab").onclick = $("openLogin").onclick = () => switchForm("login");
+$("signupTab").onclick = $("openSignup").onclick = () => switchForm("signup");
 
-</footer>
+// English letters and spaces only in name field
+$("fullName").addEventListener("input", function () {
+  const clean = this.value.replace(/[^A-Za-z ]/g, "");
+  if (clean !== this.value) {
+    this.value = clean;
+    show(signupMessage, "Name must be in English alphabets, spaces allowed.", "error");
+  } else signupMessage.textContent = "";
+});
 
+function getUsers() {
+  try {
+    const users = JSON.parse(localStorage.getItem("internxUsers"));
+    return Array.isArray(users) ? users : [];
+  } catch { return []; }
+}
+
+// SIGNUP
+$("signupForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const name = $("fullName").value.trim().replace(/\s+/g, " ");
+  const email = $("signupEmail").value.trim().toLowerCase();
+  const password = $("signupPassword").value;
+  const fail = (msg, field) => { show(signupMessage, msg, "error"); field && field.focus(); };
+
+  if (!/^[A-Za-z]+(?: [A-Za-z]+)*$/.test(name))
+    return fail("Name mein sirf English alphabets aur single spaces use karein.", $("fullName"));
+  if (!$("signupEmail").checkValidity())
+    return fail("Please enter a valid email address.", $("signupEmail"));
+  if (password.length < 8)
+    return fail("Password must be atleast of 8 characters.", $("signupPassword"));
+  if (password !== $("confirmPassword").value)
+    return fail("Passwords does not matches", $("confirmPassword"));
+
+  const users = getUsers();
+  if (users.some(u => u.email.toLowerCase() === email))
+    return fail("Email already registered! Login?.");
+
+  users.push({ name, email, password });
+  try {
+    localStorage.setItem("internxUsers", JSON.stringify(users));
+  } catch {
+    return fail("Account cant be saved, Check Browser storage.");
+  }
+  $("loginEmail").value = email;
+  $("signupForm").reset();
+  switchForm("login");
+  show(loginMessage, "Account created successfully! Please login.", "success");
+});
+
+// LOGIN
+$("loginForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const email = $("loginEmail").value.trim().toLowerCase();
+  const password = $("loginPassword").value;
+  const fail = (msg, field) => { show(loginMessage, msg, "error"); field && field.focus(); };
+
+  if (!$("loginEmail").checkValidity()) return fail("Please enter a valid email address.", $("loginEmail"));
+  if (!password) return fail("Please enter your password.", $("loginPassword"));
+
+  const user = getUsers().find(u => u.email.toLowerCase() === email && u.password === password);
+  if (!user) return fail("Incorrect email or password. Please sign up if you are a new user.");
+
+  $("rememberMe").checked
+    ? localStorage.setItem("internxEmail", email)
+    : localStorage.removeItem("internxEmail");
+
+  sessionStorage.setItem("internxLoggedInEmail", user.email);
+  sessionStorage.setItem("internxLoggedInName", user.name);
+  show(loginMessage, "Login successful! Redirecting...", "success");
+  setTimeout(() => location.href = "dashboard.html", 700);
+});
+
+
+document.querySelectorAll(".password-toggle").forEach(btn =>
+  btn.addEventListener("click", () => {
+    const input = $(btn.dataset.target), hidden = input.type === "password";
+    input.type = hidden ? "text" : "password";
+    btn.textContent = hidden ? "Hide" : "Show";
+  })
+);
+
+
+const savedEmail = localStorage.getItem("internxEmail");
+if (savedEmail) {
+  $("loginEmail").value = savedEmail;
+  $("rememberMe").checked = true;
+}
+</script>
 </body>
 </html>

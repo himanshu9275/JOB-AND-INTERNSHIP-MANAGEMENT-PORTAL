@@ -6,11 +6,9 @@
     <title>Internships - InternX</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
 
 <header class="navbar">
-
     <a href="index.html" class="logo">
         <div class="logo-box">IX</div>
         <span>InternX</span>
@@ -24,200 +22,175 @@
         <a href="dashboard.html">Dashboard</a>
         <a href="login.html" class="nav-login">Login</a>
     </nav>
-
 </header>
 
-
 <main>
-
     <section class="page-header">
-
         <p class="tag">BUILD YOUR EXPERIENCE</p>
-
         <h1>Available Internships</h1>
-
         <p>
             Explore internship opportunities and gain practical
             experience to build your career.
         </p>
-
     </section>
 
-
     <section class="jobs-section">
+        <div class="section-title">
+            <p class="tag">EXPLORE OPPORTUNITIES</p>
+            <h2>Latest Internships</h2>
+        </div>
 
-        <div class="job-grid">
+        <!-- Search and filter -->
+        <div class="search-panel">
+            <input
+                type="search"
+                id="internshipSearch"
+                placeholder="Search role, company or keyword..."
+                aria-label="Search internships"
+            >
 
+            <select id="locationFilter" aria-label="Filter internships by location">
+                <option value="">All Locations</option>
+                <option value="noida">Noida</option>
+                <option value="delhi">Delhi</option>
+                <option value="gurugram">Gurugram</option>
+                <option value="bengaluru">Bengaluru</option>
+                <option value="pune">Pune</option>
+                <option value="mumbai">Mumbai</option>
+            </select>
 
-            <div class="job-card">
+            <button type="button" id="clearFilters" class="clear-filter-btn">
+                Clear Filters
+            </button>
+        </div>
 
+        <p id="resultsCount" class="results-count" aria-live="polite">
+            Showing 6 internships
+        </p>
+
+        <div class="job-grid" id="internshipGrid">
+
+            <div class="job-card" data-location="noida">
                 <div class="job-top">
                     <span class="job-type">Internship</span>
                     <span class="job-location">Noida</span>
                 </div>
-
                 <h2>Web Development Intern</h2>
-
                 <h3>TechNova Solutions</h3>
-
                 <p>
                     Learn web development and work on real-world
                     website projects with an experienced team.
                 </p>
-
                 <div class="job-info">
                     <span>💰 ₹10,000 / Month</span>
                     <span>⏱ 3 Months</span>
                 </div>
-
-                <a href="apply.html" class="primary-btn">Apply Now</a>
-
+                <a href="apply.html?job=webdevintern" class="primary-btn job-btn">Apply Now</a>
             </div>
 
-
-            <div class="job-card">
-
+            <div class="job-card" data-location="delhi">
                 <div class="job-top">
                     <span class="job-type">Internship</span>
                     <span class="job-location">Delhi</span>
                 </div>
-
                 <h2>Cyber Security Intern</h2>
-
                 <h3>SecureNet India</h3>
-
                 <p>
                     Gain practical knowledge of network security,
                     vulnerability assessment and security tools.
                 </p>
-
                 <div class="job-info">
                     <span>💰 ₹12,000 / Month</span>
                     <span>⏱ 6 Months</span>
                 </div>
-
-                <a href="apply.html" class="primary-btn">Apply Now</a>
-
+                <a href="apply.html?job=cybersecurity" class="primary-btn job-btn">Apply Now</a>
             </div>
 
-
-            <div class="job-card">
-
+            <div class="job-card" data-location="gurugram">
                 <div class="job-top">
                     <span class="job-type">Internship</span>
                     <span class="job-location">Gurugram</span>
                 </div>
-
                 <h2>Data Analytics Intern</h2>
-
                 <h3>DataCore Pvt. Ltd.</h3>
-
                 <p>
                     Work with datasets, prepare reports and learn
                     the fundamentals of data analysis.
                 </p>
-
                 <div class="job-info">
                     <span>💰 ₹10,000 / Month</span>
                     <span>⏱ 3 Months</span>
                 </div>
-
-                <a href="apply.html" class="primary-btn">Apply Now</a>
-
+                <a href="apply.html?job=dataanalytics" class="primary-btn job-btn">Apply Now</a>
             </div>
 
-
-            <div class="job-card">
-
+            <div class="job-card" data-location="bengaluru">
                 <div class="job-top">
                     <span class="job-type">Internship</span>
                     <span class="job-location">Bengaluru</span>
                 </div>
-
                 <h2>Java Development Intern</h2>
-
                 <h3>CodeSphere Technologies</h3>
-
                 <p>
                     Learn Java programming and contribute to
                     application development projects.
                 </p>
-
                 <div class="job-info">
                     <span>💰 ₹15,000 / Month</span>
                     <span>⏱ 6 Months</span>
                 </div>
-
-                <a href="apply.html" class="primary-btn">Apply Now</a>
-
+                <a href="apply.html?job=javaintern" class="primary-btn job-btn">Apply Now</a>
             </div>
 
-
-            <div class="job-card">
-
+            <div class="job-card" data-location="pune">
                 <div class="job-top">
                     <span class="job-type">Internship</span>
                     <span class="job-location">Pune</span>
                 </div>
-
                 <h2>UI/UX Design Intern</h2>
-
                 <h3>Creative Labs</h3>
-
                 <p>
                     Learn interface design and create user-friendly
                     digital experiences for web applications.
                 </p>
-
                 <div class="job-info">
                     <span>💰 ₹8,000 / Month</span>
                     <span>⏱ 3 Months</span>
                 </div>
-
-                <a href="apply.html" class="primary-btn">Apply Now</a>
-
+                <a href="apply.html?job=uiuxintern" class="primary-btn job-btn">Apply Now</a>
             </div>
 
-
-            <div class="job-card">
-
+            <div class="job-card" data-location="mumbai">
                 <div class="job-top">
                     <span class="job-type">Internship</span>
                     <span class="job-location">Mumbai</span>
                 </div>
-
                 <h2>Software Testing Intern</h2>
-
                 <h3>Digital Works</h3>
-
                 <p>
                     Learn software testing concepts and assist
                     in identifying issues in web applications.
                 </p>
-
                 <div class="job-info">
                     <span>💰 ₹9,000 / Month</span>
                     <span>⏱ 3 Months</span>
                 </div>
-
-                <a href="apply.html" class="primary-btn">Apply Now</a>
-
+                <a href="apply.html?job=testingintern" class="primary-btn job-btn">Apply Now</a>
             </div>
 
         </div>
 
+        <p id="noResults" class="no-results" hidden>
+            No internships found. Try another keyword or location.
+        </p>
     </section>
-
 </main>
 
-
 <footer class="footer">
-
     <span>© 2026 InternX</span>
-
     <span>Job & Internship Management Portal</span>
-
 </footer>
 
+<script src="javascript/internships.js"></script>
 </body>
 </html>
